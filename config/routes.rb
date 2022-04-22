@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       resources :menus
       resources :categories
       resources :category_details
+      resources :customers
     end
   end
 
