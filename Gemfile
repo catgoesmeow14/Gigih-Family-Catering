@@ -5,6 +5,8 @@ ruby "3.0.3"
 
 gem "ffi", "~> 1.15.5"
 
+gem "webpacker"
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.1"
 
