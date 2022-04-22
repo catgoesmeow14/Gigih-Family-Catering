@@ -77,14 +77,18 @@ RSpec.describe Menu, type: :model do
     expect(menu.errors[:price]).to include("must be greater than 0.0")
   end
 
+  it 'is INVALID if description more than 150 characters long' do
+    menu = Menu.new(
+      name: 'Mie Ayam Bakso',
+      description: 'Indonesian chicken noodles with meatballs. 
+                    This food is suitable to be eaten on cloudy or rainy 
+                    weather. Mie Ayam Bakso is suitable when combined with 
+                    a glass of warm tea.',
+      price: 15000.0
+    )
 
+    menu.valid?
 
+    expect(menu.errors[:description]).to include("is too long (maximum is 150 characters)")
+  end
 end
-
-# validates :name, presence: true, uniqueness: true
-# validates :price, presence: true, numericality: { greater_than: 0.00 }
-# validates :description, presence: true, length: { maximum: 150 }
-
-# t.string "name"
-#     t.text "description"
-#     t.float "price"
