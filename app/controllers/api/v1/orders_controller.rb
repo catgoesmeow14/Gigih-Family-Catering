@@ -2,9 +2,13 @@ module Api
     module V1
         class OrdersController < ApplicationController
             def index
-                orders = Order.all
+                @orders = Order.where(nil)
 
-                render json: OrderSerializer.new(orders, options).serialized_json
+                filtering_params(params).each do |key, value|
+                    @orders = @orders.public_send("filter_by_#{key}", value) if value.present?
+                end
+
+                render json: OrderSerializer.new(@orders, options).serialized_json
             end
 
             def show
@@ -51,6 +55,10 @@ module Api
 
             def options
                 @options ||= { include: %i[order_details] }
+            end
+
+            def filtering_params(params)
+                params.slice(:status, :customer_id, :order_date, :total_min, :total_max, :order_date_min, :order_date_max)
             end
         end
     end
