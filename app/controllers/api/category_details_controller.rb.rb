@@ -34,7 +34,7 @@ module Api
             private
 
             def category_detail_params
-                params.require(:order_details).permit(:menu_id, :category_id)
+                params.require(:category_details).permit(:menu_id, :category_id)
             end
         end
     end

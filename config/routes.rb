@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :menus
       resources :categories
-      resources :menus_categories
+      resources :category_details
     end
   end
 
