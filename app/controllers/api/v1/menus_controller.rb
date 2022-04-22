@@ -63,7 +63,7 @@ module Api
                 menu = Menu.find_by(id: params[:id])
 
                 if menu.destroy
-                    MenusCategory.where(menu_id: menu.id).delete_all
+                    CategoryDetail.where(menu_id: menu.id).delete_all
                     head :no_content
                 else
                     render json: { errors: menu.errors.messages }, status: 422
