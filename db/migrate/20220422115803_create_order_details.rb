@@ -4,6 +4,7 @@ class CreateOrderDetails < ActiveRecord::Migration[7.0]
       t.integer :qty
       t.belongs_to :order, null: false, foreign_key: true
       t.belongs_to :menu, null: false, foreign_key: true
+      t.integer :subtotal
 
       t.timestamps
     end

@@ -3,5 +3,6 @@ FactoryBot.define do
     qty { 1 }
     order { nil }
     menu { nil }
+    subtotal { 1 }
   end
 end
