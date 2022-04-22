@@ -65,6 +65,20 @@ RSpec.describe Menu, type: :model do
     expect(menu2.errors[:name]).to include("has already been taken")
   end
 
+  it 'is INVALID if price less than 0.01' do
+    menu = Menu.new(
+      name: 'Mie Ayam Bakso',
+      description: 'Indonesian chicken noodles with meatballs.',
+      price: 0.0
+    )
+
+    menu.valid?
+
+    expect(menu.errors[:price]).to include("must be greater than 0.0")
+  end
+
+
+
 end
 
 # validates :name, presence: true, uniqueness: true
