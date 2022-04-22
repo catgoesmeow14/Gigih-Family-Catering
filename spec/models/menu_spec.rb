@@ -47,6 +47,24 @@ RSpec.describe Menu, type: :model do
     expect(menu.errors[:price]).to include("can't be blank")
   end
 
+  it "is INVALID with a duplicate name" do
+    menu1 = Menu.create(
+      name: 'Mie Ayam Bakso',
+      description: 'Indonesian chicken noodles with meatballs.',
+      price: 15000.0
+    )
+    
+    menu2 = Menu.new(
+      name: 'Mie Ayam Bakso',
+      description: 'The combination of noodles with chicken and meatballs.',
+      price: 15000.0
+    )
+
+    menu2.valid?
+    
+    expect(menu2.errors[:name]).to include("has already been taken")
+  end
+
 end
 
 # validates :name, presence: true, uniqueness: true
