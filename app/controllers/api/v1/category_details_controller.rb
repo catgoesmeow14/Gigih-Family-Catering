@@ -2,7 +2,7 @@ module Api
     module V1
         class CategoryDetailController < ApplicationController
             def create 
-                category_detail = CategoryDetail.new(menu_category_params)
+                category_detail = CategoryDetail.new(category_detail_params)
 
                 if category_detail.save
                     render json: CategoryDetailSerializer.new(category_detail).serialized_json
@@ -34,7 +34,7 @@ module Api
             private
 
             def category_detail_params
-                params.require(:category_details).permit(:menu_id, :category_id)
+                params.require(:category_details).permit(:category_id, :menu_id)
             end
         end
     end
