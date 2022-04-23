@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :category_detail do
-    category { nil }
-    menu { nil }
+    menu_id { 1 }
+    category_id { 2 }
   end
 end
