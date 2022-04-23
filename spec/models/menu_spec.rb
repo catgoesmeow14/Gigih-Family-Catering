@@ -1,22 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe Menu, type: :model do
-  it 'is valid with a name, a description, and a price' do
-    menu = Menu.new(
-      name: 'Mie Ayam Bakso',
-      description: 'Indonesian chicken noodles with meatballs.',
-      price: 15000.0
-    )
+  it "has a valid factory" do
+    expect(FactoryBot.build(:menu)).to be_valid
+  end
 
-    expect(menu).to be_valid
+  it 'is valid with a name, a description, and a price' do
+    expect(FactoryBot.build(:menu)).to be_valid
   end
 
   it 'is INVALID without a name' do
-    menu = Menu.new(
-      name: nil,
-      description: 'Indonesian chicken noodles with meatballs.',
-      price: 15000.0
-    )
+    menu = FactoryBot.build(:menu, name: nil)
 
     menu.valid?
 
@@ -24,11 +18,7 @@ RSpec.describe Menu, type: :model do
   end
 
   it 'is INVALID without a description' do
-    menu = Menu.new(
-      name: 'Mie Ayam Bakso',
-      description: nil,
-      price: 15000.0
-    )
+    menu = FactoryBot.build(:menu, description: nil)
 
     menu.valid?
 
@@ -36,11 +26,7 @@ RSpec.describe Menu, type: :model do
   end
 
   it 'is INVALID without a price' do
-    menu = Menu.new(
-      name: 'Mie Ayam Bakso',
-      description: 'Indonesian chicken noodles with meatballs.',
-      price: nil
-    )
+    menu = FactoryBot.build(:menu, price: nil)
 
     menu.valid?
 
@@ -48,17 +34,8 @@ RSpec.describe Menu, type: :model do
   end
 
   it "is INVALID with a duplicate name" do
-    menu1 = Menu.create(
-      name: 'Mie Ayam Bakso',
-      description: 'Indonesian chicken noodles with meatballs.',
-      price: 15000.0
-    )
-    
-    menu2 = Menu.new(
-      name: 'Mie Ayam Bakso',
-      description: 'The combination of noodles with chicken and meatballs.',
-      price: 15000.0
-    )
+    menu1 = FactoryBot.create(:menu, name: 'Mie Ayam Bakso')
+    menu2 = FactoryBot.build(:menu, name: 'Mie Ayam Bakso')
 
     menu2.valid?
     
@@ -66,11 +43,7 @@ RSpec.describe Menu, type: :model do
   end
 
   it 'is INVALID if price less than 0.01' do
-    menu = Menu.new(
-      name: 'Mie Ayam Bakso',
-      description: 'Indonesian chicken noodles with meatballs.',
-      price: 0.0
-    )
+    menu = FactoryBot.build(:menu, price: 0.0)
 
     menu.valid?
 
@@ -78,14 +51,10 @@ RSpec.describe Menu, type: :model do
   end
 
   it 'is INVALID if description more than 150 characters long' do
-    menu = Menu.new(
-      name: 'Mie Ayam Bakso',
-      description: 'Indonesian chicken noodles with meatballs. 
-                    This food is suitable to be eaten on cloudy or rainy 
-                    weather. Mie Ayam Bakso is suitable when combined with 
-                    a glass of warm tea.',
-      price: 15000.0
-    )
+    menu = FactoryBot.build(:menu, description: 'Indonesian chicken noodles with meatballs. 
+                                                  This food is suitable to be eaten on cloudy or rainy 
+                                                  weather. Mie Ayam Bakso is suitable when combined with 
+                                                  a glass of warm tea.')
 
     menu.valid?
 
