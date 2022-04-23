@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :category do
-      category_name { "Dessert" }
+      name { "Appetizer" }
   end
 
   factory :invalid_category, parent: :category do
-      category_name { nil }
+      name { nil }
   end
 end

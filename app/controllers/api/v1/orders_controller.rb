@@ -29,7 +29,7 @@ module Api
                     end
                     order_detail = OrderDetail.where(order_id: order.id)
                     total_order_price = order_detail.sum('subtotal')
-                    order.update(total: total_order_price)
+                    order.update(total_price: total_order_price)
 
                     render json: OrderSerializer.new(order, options).serialized_json
                 else
