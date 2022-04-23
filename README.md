@@ -1,7 +1,7 @@
 ## Gigih Family Catering - Rails with SQLite3
 ### By: KM_G2BE2086_Vidya Chandradev
 Final Project assignment berbentuk API berupa JSON
-1. Testing API dapat dicoba menggunakan aplikasi REST client seperti Insomnia (https://insomnia.rest/) atau Postman [].
+1. Testing API dapat dicoba menggunakan aplikasi REST client seperti Insomnia (https://insomnia.rest/) atau Postman.
 
 ##### Code yang harus dijalani pertama kali
 > bundle install
