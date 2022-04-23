@@ -61,6 +61,8 @@ module Api
 
             def destroy
                 menu = Menu.find_by(id: params[:id])
+                CategoryDetail.where(menu_id: menu.id).delete_all
+                OrderDetail.where(menu_id: menu.id).delete_all
 
                 if menu.destroy
                     CategoryDetail.where(menu_id: menu.id).delete_all
