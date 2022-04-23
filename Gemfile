@@ -77,7 +77,6 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
-  gem 'rails-controller-testing'
 end
 
 group :development, :test do

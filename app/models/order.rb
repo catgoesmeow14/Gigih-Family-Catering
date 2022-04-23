@@ -8,7 +8,7 @@ class Order < ApplicationRecord
   scope :filter_by_order_date_max, -> (order_date_max) { where("order_date < ?", order_date_max)}
 
   validates :customer_id, presence: true
-  validates :total, presence: true
+  validates :total_price, presence: true
   validates :status, presence: true, inclusion: { in: %w(NEW PAID CANCELED), message: "is not a valid status" }
   validates :order_date, presence: true
   
