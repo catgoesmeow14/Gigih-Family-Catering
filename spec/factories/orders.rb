@@ -11,5 +11,5 @@ FactoryBot.define do
     order_date { "2022-04-22" }
     status { "delete" }
     customer_id { nil } 
-end
+  end
 end
